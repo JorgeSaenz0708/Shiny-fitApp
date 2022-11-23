@@ -1,23 +1,10 @@
-#
-# This is a Shiny web application. You can run the application by clicking
-# the 'Run App' button above.
-#
-# Find out more about building applications with Shiny here:
-#
-#    http://shiny.rstudio.com/
-#
-
+# This is an App done to help you find the better food to eat according to you fitness requirements in order to achive the goal.
 library(shiny)
 library(shinydashboard)
 library(ggplot2)
-
 library(readxl)
 library(dplyr)
 
-# df <- read_excel("C:/Users/Usuario/Desktop/mimo_proyecto/DF_alimentos_no_tildes.xlsx")
-# Function to bring data from xlsx and clean it
-
-#setwd( "C:/Users/Usuario/Desktop/mimo_proyecto")
 
 df <- read_excel("C:/Users/Usuario/Desktop/mimo_proyecto/DF_alimentos_no_tildes.xlsx")
 
@@ -178,20 +165,14 @@ tabItems(
                  selectInput("txt_6", "Somatipo", c("Ectomorfo", "Mesomorfo", "Endomorfo")),
                  submitButton("Calcular"),
                 
-                 # textInput("txt_1", "Objetivo"),
-                 # textInput("txt_1", "Objetivo"),
-                 # textInput("txt_1", "Objetivo"),
-                 # textInput("txt_1", "Objetivo"),
-                 # textInput("txt_1", "Objetivo"),
-                 # textInput("txt_1", "Objetivo"),
-            ),
+              ),
             box(valueBoxOutput("valor"),
-            valueBoxOutput("valor_2"),
-            valueBoxOutput("act_fisi"),
-            valueBoxOutput("k_obj"),
-            valueBoxOutput("c_prote"),
-            valueBoxOutput("gras"),
-            valueBoxOutput("carbs")
+                valueBoxOutput("valor_2"),
+                valueBoxOutput("act_fisi"),
+                valueBoxOutput("k_obj"),
+                valueBoxOutput("c_prote"),
+                valueBoxOutput("gras"),
+                valueBoxOutput("carbs")
             
             
             )
@@ -199,25 +180,23 @@ tabItems(
     
     tabItem(
         tabName = "ba1", 
-            
-            
+                        
            box( textInput("txt", "Digita un alimento:"),
                 ),
            box( 
                 selectInput("inSelect", "Select input",c("Item A", "Item B", "Item C")),
                 ),
+           
            box( 
-                #valueBoxOutput("carbs_bd"),
-                submitButton("Actualizar")),
-          box(
+               submitButton("Actualizar")),
+        
+           box(
                 valueBoxOutput("result"),
                 valueBoxOutput("result_1"),
                 valueBoxOutput("result_2"),
                 valueBoxOutput("result_3"),
                 )
-        
-        #renderPlot("plt")
-    )
+            )
             
         )
     )  
@@ -232,12 +211,8 @@ tabItems(
 
 ui <- fluidPage(dashboardPage(skin = "green", header, sidebar, body))
 
-    
-    
 
-
-
-# Define server logic required to draw a histogram
+# SERVER  
 server <- function(input, output, session) {
     
 
@@ -351,9 +326,9 @@ server <- function(input, output, session) {
 
         },
         
-        subtitle = "Cantidad carbohidratos (g)",
-        icon = icon("carrot",  lib= "font-awesome"),
-        color= "light-blue"
+            subtitle = "Cantidad carbohidratos (g)",
+            icon = icon("carrot",  lib= "font-awesome"),
+            color= "light-blue"
         )
           
     })
